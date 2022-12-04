@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Mono|Work+Sans:400,700&display=swap');
+
+*{
+  box-sizing: unset;
+  font-family: 'Work Sans';
+  font-style: normal;
+}
+ul{
+  margin-top: revert;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #2B2B2B;
+}
