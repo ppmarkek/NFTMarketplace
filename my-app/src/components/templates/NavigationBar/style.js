@@ -22,6 +22,11 @@ export const StyledLink = styled(Link)`
     }
 `;
 
+export const SingInLink = styled(Link)`
+    text-decoration: none;
+    color: #fff;
+`
+
 export const Menu = styled(Grid)`
     gap: 10px;
     width: 608px;
