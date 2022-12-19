@@ -10,7 +10,11 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "formik": "^2.2.9",
+    "formik-material-ui": "^4.0.0-alpha.2",
+    "formik-mui": "^5.0.0-alpha.0",
     "mui": "^0.0.1",
+    "mui-formik": "^0.1.1",
     "node": "^19.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,7 +23,8 @@
     "react-scripts": "5.0.1",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
