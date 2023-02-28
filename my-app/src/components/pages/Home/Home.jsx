@@ -8,23 +8,33 @@ import Eye from '../../../assets/Icon/Eye.svg';
 import Shroomie from '../../../assets/Avatar/Shroomie.svg';
 import Austrobaut from '../../../assets/Img/austrobaut.svg';
 import EnvelopeSimple from '../../../assets/Icon/EnvelopeSimple.svg';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const Home = () => {
-    let countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-    setInterval(function() {
-        let now = new Date().getTime();
-        let distance = countDownDate - now;
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById("Hours").innerHTML = hours;
-        document.getElementById("Minutes").innerHTML = minutes;
-        document.getElementById("Seconds").innerHTML = seconds;
-    }, 1000);
+    const Timer = () => {
+        let countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+        setInterval(function() {
+            let now = new Date().getTime();
+            let distance = countDownDate - now;
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("Hours").innerHTML = hours;
+            document.getElementById("Minutes").innerHTML = minutes;
+            document.getElementById("Seconds").innerHTML = seconds;
+        }, 1000);
+    }
+    
+    useEffect(() => {
+        Timer();
+        AOS.init();
+    });
     return(
         <Grid>
             <HeroGrid container>
-                <AboutGrid item xs={5}>
+                <AboutGrid item xs={5} data-aos="fade-right">
                     <Title fontSize="67px">Discover digital art & Collect NFTs</Title>
                     <Text fontSize="22px">NFT marketplace UI created with Anima for Figma. 
                     Collect, buy and sell art from more than 20k NFT artists.</Text>
@@ -46,7 +56,7 @@ const Home = () => {
                         </Grid>
                     </Grid>
                 </AboutGrid>
-                <CartGrid container item xs={5} flexDirection="column">
+                <CartGrid container item xs={5} flexDirection="column" data-aos="fade-left">
                     <ImgCart src={NFTCart} alt="" />
                     <CartAbout container>
                         <Title fontSize="22px">Space Walking</Title>
@@ -57,12 +67,13 @@ const Home = () => {
                     </CartAbout>
                 </CartGrid>
             </HeroGrid>
+
             <TrendingGrid container>
-                <TrandingTitle container>
+                <TrandingTitle container data-aos="fade-right">
                     <Title fontSize="38px">Trending Collection</Title>
                     <Text fontSize="22px">Checkout our weekly updated trending collection.</Text>
                 </TrandingTitle>
-                <TrandingCartBox container>
+                <TrandingCartBox container data-aos="fade-up">
                     {Tranding.map((item) => (
                     <TrandingCart key={item.Title} container>
                         <TrandingImg src={item.Img1} alt="" $Big/>
@@ -84,15 +95,16 @@ const Home = () => {
                     ))}
                 </TrandingCartBox>
             </TrendingGrid>
+
             <TopCreators container>
                 <TopCreatorsTitle container>
-                    <Grid container width="600px" flexDirection="column">
+                    <Grid container width="600px" flexDirection="column" data-aos="fade-right">
                         <Title fontSize="38px">Top creators</Title>
                         <Text fontSize="22px">Checkout Top Rated Creators on the NFT Marketplace</Text>
                     </Grid>
-                    <StyledButton variant="outlined" background><img src={Rocket} alt=""/>View Rankings</StyledButton>
+                    <StyledButton data-aos="fade-left" variant="outlined" background><img src={Rocket} alt=""/>View Rankings</StyledButton>
                 </TopCreatorsTitle>
-                <TopCreatorsAllBox container>
+                <TopCreatorsAllBox container data-aos="fade-up">
                     {TopCreatorsData.map((item) =>(
                         <TopCreatorsBox key={item.id} xs={2.745}>
                             <TopCreatorsBoxId container>{item.id}</TopCreatorsBoxId>
@@ -110,9 +122,10 @@ const Home = () => {
                     ))}
                 </TopCreatorsAllBox>
             </TopCreators>
+
             <BrowseCategories>
-                <Title fontSize="38px">Browse Categories</Title>
-                <BrowseCategoriesAllBox container>
+                <Title fontSize="38px" data-aos="fade-right">Browse Categories</Title>
+                <BrowseCategoriesAllBox container data-aos="fade-up">
                     {BrowseCategoriesData.map((item) => (
                         <BrowseCategoriesBox xs={2.745} key={item.Background}>
                             <BrowseCategoriesBoxImg xs={12} $background={item.Background}>
@@ -127,15 +140,16 @@ const Home = () => {
                     ))}
                 </BrowseCategoriesAllBox>
             </BrowseCategories>
+
             <DiscoverMore>
                 <DiscoverMoreTitle container>
-                    <Grid container width="470px" flexDirection="column">
+                    <Grid container width="470px" flexDirection="column" data-aos="fade-right">
                         <Title fontSize="38px">Discover More NFTs</Title>
                         <Text fontSize="22px">Explore new trending NFTs</Text>
                     </Grid>
-                    <StyledButton variant="outlined" background><img src={Eye} alt=""/>See All</StyledButton>
+                    <StyledButton data-aos="fade-left" variant="outlined" background><img src={Eye} alt=""/>See All</StyledButton>
                 </DiscoverMoreTitle>
-                <DiscoverMoreAllBox container>
+                <DiscoverMoreAllBox container data-aos="fade-up">
                     {DiscoverMoreData.map((item) => (
                         <DiscoverMoreBox key={item.Creator}>
                             <DiscoverMoreBoxImg>
@@ -164,9 +178,10 @@ const Home = () => {
                     ))}
                 </DiscoverMoreAllBox>
             </DiscoverMore>
+
             <MagicMushrooms container>
                 <MagicMushroomsBox container>
-                    <Grid container xs={9} height="220px" flexDirection="column" justifyContent="space-between">
+                    <Grid container xs={9} height="220px" flexDirection="column" justifyContent="space-between" data-aos="fade-right">
                         <MagicMushroomsBoxCreator container>
                             <img src={Shroomie} alt=""/>
                             <Grid width="75px">Shroomie</Grid>
@@ -177,7 +192,7 @@ const Home = () => {
                             See All
                         </MagicMushroomsButton>
                     </Grid>
-                    <Grid container xs={3} height="220px" flexDirection="column" justifyContent="flex-end">
+                    <Grid container xs={3} height="220px" flexDirection="column" justifyContent="flex-end" data-aos="fade-left">
                         <MagicMushroomsBoxTimer>
                             <Text fontSize="12px" Mono>Auction ends in:</Text>
                             <Grid container justifyContent="space-between">
@@ -200,12 +215,13 @@ const Home = () => {
                     </Grid>
                 </MagicMushroomsBox>
             </MagicMushrooms>
+
             <HowItWorks container>
-                <Grid>
+                <Grid data-aos="fade-right">
                     <Title fontSize="38px">How it works</Title>
                     <Text fontSize="22px">Find out how to get started</Text>
                 </Grid>
-                <HowItWorksAllBox container>
+                <HowItWorksAllBox container data-aos="fade-up">
                     {HowItWorksData.map((item) => (
                         <HowItWorksBox container key={item.Icon}>
                             <img src={item.Icon} alt=""/>
@@ -219,7 +235,8 @@ const Home = () => {
                     ))}
                 </HowItWorksAllBox>
             </HowItWorks>
-            <JoinOur>
+
+            <JoinOur data-aos="zoom-in-up">
                 <JoinOurBox container>
                     <JoinOurImg src={Austrobaut} alt=""/>
                     <JoinOurBoxText container>
